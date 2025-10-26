@@ -11,14 +11,9 @@ public:
                 neg.push_back(nums[i]);
             }
         }
-        int i=0, j=0;
-        for(int k=0; k<nums.size(); k++){
-            if(k%2 == 0){
-                nums[k] = pos[i++];
-            }
-            else{
-                nums[k] = neg[j++];
-            }
+        for(int i=0; i<nums.size()/2; i++){
+            nums[2*i] = pos[i];
+            nums[2*i+1] = neg[i];
         }
         return nums;
     }
