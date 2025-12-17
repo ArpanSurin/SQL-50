@@ -17,11 +17,12 @@ public:
                 }
             }
         }
-        vector<int> arr(s.size());
-        for (int i = arr.size() -1; i >= 0; i--) {
-            arr[i] = s.top();
+        vector<int> arr;
+        while(!s.empty()){
+            arr.push_back(s.top());
             s.pop();
         }
+        reverse(arr.begin(), arr.end());
         return arr;
     }
 };
