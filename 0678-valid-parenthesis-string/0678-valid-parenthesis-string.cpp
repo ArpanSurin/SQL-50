@@ -1,23 +1,32 @@
 class Solution {
 public:
     bool checkValidString(string s) {
-        int n = s.size() - 1;
-        int open = 0;
-        int close = 0;
-        for(int i=0; i<=n; i++){
-           // pointer 1;
-           if(s[i] == '(' || s[i] == '*'){
-            open++;
-           }else{
-            open--;
-           }
-           //pointer 2;
-           if(s[n-i] == ')' || s[n-i] == '*'){
-            close++;
-           }else{
-            close--;
-           }
-           if(open < 0 || close < 0) return false;
+        stack<int> par;
+        stack<int> star;
+        for(int i=0; i<s.size(); i++){
+            if(s[i] == '('){
+                par.push(i);
+            }
+            else if(s[i] == '*'){
+                star.push(i);
+            }
+            else{
+                if(!par.empty()){
+                    par.pop();
+                }
+                else if(!star.empty()){
+                    star.pop();
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        while(!par.empty()){
+            if(star.empty()) return false;
+            if(star.top() < par.top()) return false;
+            par.pop();
+            star.pop();
         }
         return true;
     }
