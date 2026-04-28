@@ -9,7 +9,7 @@ public:
             map[c]++;
         }
         for(char c : t){
-            if(map.find(c) == map.end()){
+            if(map.find(c) == map.end() || map[c] == 0){
                 return false;
             }
             map[c]--;
