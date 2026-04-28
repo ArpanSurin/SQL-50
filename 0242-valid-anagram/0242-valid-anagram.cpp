@@ -4,16 +4,15 @@ public:
         if(s.size() != t.size()){
             return false;
         }
-        int arr[26] = {0};
-        for(int i = 0; i<s.size(); i++){
-            arr[s[i] - 'a'] += 1;
-            arr[t[i] - 'a'] -= 1;
+        unordered_map<char, int> map;
+        for(char c : s){
+            map[c]++;
         }
-
-        for(auto& check : arr){
-            if(check != 0){
+        for(char c : t){
+            if(map.find(c) == map.end()){
                 return false;
             }
+            map[c]--;
         }
         return true;
     }
