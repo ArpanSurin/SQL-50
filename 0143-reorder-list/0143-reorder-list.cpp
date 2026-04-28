@@ -34,7 +34,6 @@ public:
         ListNode* first = head;
         ListNode* second = reverseList(slow->next);
         slow->next = nullptr;
-        
         while(second){
             ListNode *tmp1 = first->next, *tmp2 = second->next;
             first->next = second;
