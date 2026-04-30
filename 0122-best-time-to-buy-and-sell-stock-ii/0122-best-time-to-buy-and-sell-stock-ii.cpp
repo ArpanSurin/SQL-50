@@ -3,7 +3,8 @@ public:
     int maxProfit(vector<int>& prices) {
         int max_profit = 0;
         int start = prices[0];
-        for(int i=1; i<prices.size(); i++){
+        int len = prices.size();
+        for(int i=1; i<len; i++){
             if(prices[i] > start){
                 max_profit += prices[i] - start;
             }
